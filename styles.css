@@ -201,4 +201,185 @@ header nav a.active {
     box-shadow: 0 0 20px rgba(255,0,0,0.35);
 }
 
+/* ===== GALLERY SECTION ===== */
+.category-buttons {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.category-buttons button {
+    background: linear-gradient(90deg, #700000, #c20000);
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(255,0,0,0.25);
+}
+
+.category-buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,0,0,0.45);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-card {
+    background: rgba(255,0,0,0.05);
+    border: 1px solid rgba(255,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: 0.3s;
+}
+
+.gallery-card h3 {
+    color: #e30000;
+    font-size: 20px;
+    margin: 10px 0 5px;
+}
+
+.gallery-card p {
+    color: #ccc;
+    font-size: 15px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(255,0,0,0.35);
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ===== Category Buttons ===== */
+.category-buttons {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.category-buttons button {
+    background: linear-gradient(90deg, #700000, #c20000);
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(255,0,0,0.25);
+}
+
+.category-buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,0,0,0.45);
+}
+
+/* Tombol kategori aktif */
+.category-buttons button.active {
+    background: linear-gradient(90deg, #c20000, #ff3b3b);
+    box-shadow: 0 0 25px rgba(255,0,0,0.6);
+    transform: scale(1.08);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+    gap: 20px; /* jarak antar grid */
+    padding: 0 20px;
+}
+
+.gallery-card {
+    background: rgba(255,0,0,0.05);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.gallery-card h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+.gallery-card p {
+    font-size: 14px;
+    color: #bbb;
+}
+
+@media screen and (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+}
+
+.modal-content {
+    background: #111;
+    margin: 60px auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    color: #fff;
+    text-align: center;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 12px;
+}
+
+.close {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
