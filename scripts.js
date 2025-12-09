@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let galleryData = [];
 
+    // ===== FETCH CSV & RENDER =====
     if(galleryGrid && categoryButtons.length > 0) {
 
         fetch(sheetCsvUrl)
         .then(res => res.text())
         .then(csvText => {
-            // Parse CSV sederhana
             const lines = csvText.split('\n').filter(l => l.trim() !== '');
             const headers = lines.shift().split(','); // Kategori,Judul,Deskripsi,URL Foto,Pencipta,TanggalUpload
 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(err => console.error('Fetch CSV error:', err));
 
-        // Render gallery
+        // ===== RENDER GALLERY =====
         function renderGallery(filter) {
             const f = filter.trim().toLowerCase();
             galleryGrid.innerHTML = '';
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p>${item.deskripsi}</p>
                     `;
 
-                    // Tambahin modal click
+                    // ===== MODAL FOTO =====
                     const modal = document.getElementById('galleryModal');
                     const modalImg = document.getElementById('modalImage');
                     const modalTitle = document.getElementById('modalTitle');
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Tombol kategori filter
+        // ===== FILTER KATEGORI =====
         categoryButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 const category = btn.getAttribute('data-category').trim();
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Tutup modal
+    // ===== TUTUP MODAL =====
     const modal = document.getElementById('galleryModal');
     const closeBtn = document.querySelector('.close');
     if(closeBtn){
@@ -92,9 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ======= ANTI INSPECT =======
-
-    // Tambahin popup warning
+    // ===== POPUP WARNING =====
     function showWarning(msg) {
         const popup = document.getElementById("warnPopup");
         if(!popup) return;
@@ -106,22 +104,58 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500); // 0.5 detik
     }
 
-    // Klik kanan
+    // ===== ANTI INSPECT =====
     document.addEventListener("contextmenu", function(e) {
         e.preventDefault();
         showWarning("Stop trying to get into my mind!");
     });
 
-    // Keyboard
     document.onkeydown = function(e) {
         // F12
-        if(e.keyCode === 123) { showWarning("Stop trying to get into my mind!"); return false; }
+        if(e.keyCode === 123){ showWarning("Stop trying to get into my mind!"); return false; }
         // CTRL+SHIFT+I
         if(e.ctrlKey && e.shiftKey && e.keyCode === 73){ showWarning("Stop trying to get into my mind!"); return false; }
         // CTRL+SHIFT+J
         if(e.ctrlKey && e.shiftKey && e.keyCode === 74){ showWarning("Stop trying to get into my mind!"); return false; }
-        // CTRL+U
-        if(e.ctrlKey && e.keyCode === 85){ showWarning("Stop trying to get into my mind!"); return false; }
+        // CTRL+U → tampil foto fullscreen random
+        if(e.ctrlKey && e.keyCode === 85){ 
+            e.preventDefault();
+            if(galleryData.length > 0){
+                const randomItem = galleryData[Math.floor(Math.random() * galleryData.length)];
+                showFullScreenImage('https://i.postimg.cc/8kw0bkYX/image.png');
+            }
+            return false;
+        }
     };
+
+    // ===== FULLSCREEN FOTO UNTUK CTRL+U =====
+    function showFullScreenImage(url){
+        let fullScreenDiv = document.createElement('div');
+        fullScreenDiv.style.position = 'fixed';
+        fullScreenDiv.style.top = 0;
+        fullScreenDiv.style.left = 0;
+        fullScreenDiv.style.width = '100%';
+        fullScreenDiv.style.height = '100%';
+        fullScreenDiv.style.background = 'rgba(0,0,0,0.95)';
+        fullScreenDiv.style.display = 'flex';
+        fullScreenDiv.style.alignItems = 'center';
+        fullScreenDiv.style.justifyContent = 'center';
+        fullScreenDiv.style.zIndex = 9999;
+
+        const img = document.createElement('img');
+        img.src = url;
+        img.style.maxWidth = '95%';
+        img.style.maxHeight = '95%';
+        img.style.borderRadius = '8px';
+        img.style.boxShadow = '0 0 30px rgba(255,0,0,0.7)';
+
+        fullScreenDiv.appendChild(img);
+        document.body.appendChild(fullScreenDiv);
+
+        // Klik anywhere → tutup
+        fullScreenDiv.addEventListener('click', () => {
+            document.body.removeChild(fullScreenDiv);
+        });
+    }
 
 });
