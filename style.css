@@ -316,18 +316,6 @@ header nav a.active {
     color: #bbb;
 }
 
-@media screen and (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 .modal {
     display: none;
     position: fixed;
