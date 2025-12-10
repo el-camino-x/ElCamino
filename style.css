@@ -205,8 +205,10 @@ header nav a.active {
 }
 
 .category-buttons {
-    text-align: center;
-    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;  /* horizontal selalu */
+    gap: 8px;
+    justify-content: center; /* biar di tengah */
 }
 
 .category-buttons button {
@@ -274,34 +276,6 @@ header nav a.active {
     transform: translateY(-5px);
 }
 
-.category-buttons {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.category-buttons button {
-    background: linear-gradient(90deg, #700000, #c20000);
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    margin: 0 8px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 0 10px rgba(255,0,0,0.25);
-}
-
-.category-buttons button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255,0,0,0.45);
-}
-
-.category-buttons button.active {
-    background: linear-gradient(90deg, #c20000, #ff3b3b);
-    box-shadow: 0 0 25px rgba(255,0,0,0.6);
-    transform: scale(1.08);
-}
 
 .gallery-grid {
     display: grid;
@@ -392,36 +366,6 @@ header nav a.active {
     flex-wrap: wrap;
 }
 
-.category-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-width: 150px;
-}
-
-.category-buttons button {
-    width: 100%;
-    text-align: left;
-    padding: 10px 16px;
-    border-radius: 6px;
-    background: linear-gradient(90deg, #700000, #c20000);
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 0 10px rgba(255,0,0,0.25);
-}
-
-.category-buttons button:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(255,0,0,0.45);
-}
-
-.category-buttons button.active {
-    background: linear-gradient(90deg, #c20000, #ff3b3b);
-    box-shadow: 0 0 25px rgba(255,0,0,0.6);
-    transform: scale(1.03);
-}
 
 .gallery-grid {
     flex: 1;
@@ -435,6 +379,7 @@ header nav a.active {
         flex-direction: column;
         text-align: center;
     }
+    
     .category-buttons {
         flex-direction: row;
         justify-content: center;
@@ -515,10 +460,7 @@ header nav a.active {
 
 @media screen and (max-width: 480px) {
     .category-buttons {
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
-        align-items: center;
+        flex-direction: column; /* <-- ini yang bikin button berbaris ke bawah */
     }
     .category-buttons button {
         width: 80%;
