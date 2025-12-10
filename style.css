@@ -466,12 +466,17 @@ header nav a.active {
 
 @media screen and (max-width: 480px) {
     .category-buttons {
-        flex-direction: column; 
+        display: flex;
+        flex-direction: row;  
+        flex-wrap: wrap;
+        justify-content: center;  
+        align-items: center; 
+        gap: 6px;
     }
     .category-buttons button {
-        width: 80%;
+        width: auto;         
         font-size: 14px;
-        padding: 8px 0;
+        padding: 8px 12px;
     }
 }
 
