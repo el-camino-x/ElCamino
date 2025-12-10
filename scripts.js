@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     judul: cols[1]?.trim() || '',
                     deskripsi: cols[2]?.trim() || '',
                     url: cols[3]?.trim() || '',
-                    pencipta: cols[4]?.trim() || '-',
-                    tanggalUpload: cols[5]?.trim() || '-'
+                      price: cols[4]?.trim() || '-',
+
                 };
             });
 
@@ -50,16 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     const modalImg = document.getElementById('modalImage');
                     const modalTitle = document.getElementById('modalTitle');
                     const modalDesc = document.getElementById('modalDesc');
-                    const modalCreator = document.getElementById('modalCreator');
-                    const modalDate = document.getElementById('modalDate');
+                    const modalPrice = document.getElementById('modalPrice');
 
                     card.querySelector('img').addEventListener('click', () => {
                         modal.style.display = 'block';
                         modalImg.src = item.url;
                         modalTitle.textContent = item.judul || '-';
                         modalDesc.textContent = item.deskripsi || '-';
-                        modalCreator.textContent = item.pencipta || '-';
-                        modalDate.textContent = item.tanggalUpload || '-';
+                        modalPrice.textContent = item.price || '-';
                     });
 
                     galleryGrid.appendChild(card);
