@@ -32,7 +32,12 @@ header .logo {
     font-weight: 700;
     letter-spacing: 2px;
     color: #c60000; 
-    text-decoration: none;
+    text-decoration: none !important;
+}
+
+.logo:hover {
+    text-decoration: none !important;
+    color: #ff3b3b;
 }
 
 header nav a {
@@ -461,7 +466,7 @@ header nav a.active {
 
 @media screen and (max-width: 480px) {
     .category-buttons {
-        flex-direction: column; /* <-- ini yang bikin button berbaris ke bawah */
+        flex-direction: column; 
     }
     .category-buttons button {
         width: 80%;
