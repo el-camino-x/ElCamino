@@ -481,6 +481,51 @@ header nav a.active {
     }
 }
 
+.modal-image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.detail-btn {
+    background: #c60000;
+    border: none;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.detail-btn:hover {
+    background: #ff3b3b;
+    transform: scale(1.05);
+}
+
+
+.modal-img-slide {
+  position: relative;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.slide-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.slide-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-reset {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+
 
 
 
